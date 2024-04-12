@@ -1,0 +1,22 @@
+<div class="container mx-auto px-4 py-8 h-full">
+    <form [formGroup]="userForm" (ngSubmit)="UpdatedData()" class="rounded-xl bg-white shadow">
+        <div class="p-2">
+          <input matInput formControlName="firstName" placeholder="First Name" required>
+        </div>
+        <div class="p-2">
+          <input matInput formControlName="lastName" placeholder="Last Name" required>
+        </div>
+        <div class="p-2">
+          <input matInput formControlName="address" placeholder="Address" required>
+        </div>
+        <div class="p-2">
+          <input matInput formControlName="email" placeholder="Email" required email>
+          <small *ngIf="userForm.get('email')?.hasError('email')">Invalid email address</small>
+        </div>
+        <div class="p-2">
+          <input matInput formControlName="phone" placeholder="Phone" [maxlength]="10" required pattern="[0-9]{10}">
+          <small *ngIf="userForm.get('phone')?.hasError('pattern')">Invalid phone number please verify again</small>
+        </div>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </form>
+</div>

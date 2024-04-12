@@ -1,0 +1,26 @@
+
+<div class="container mx-auto px-4 py-8 h-full">
+    <form [formGroup]="userForm" (ngSubmit)="saveUserData()" >
+        <mat-form-field>
+          <input matInput formControlName="firstName" placeholder="First Name" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="lastName" placeholder="Last Name" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="address" placeholder="Address" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="email" placeholder="Email" required email>
+          <mat-error *ngIf="userForm.get('email')?.hasError('email')">Invalid email address</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="phone" placeholder="Phone" required pattern="[0-9]{10}">
+          <mat-error *ngIf="userForm.get('phone')?.hasError('pattern')">Invalid phone number please verify again</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" class="p-2 bg-green-600">Save</button>
+      </form>
+
+      <button mat-raised-button color="primary" type="button" class="p-2 bg-gray-500" (click)="gotUserList()">gotoUserList</button>
+</div>
+  
